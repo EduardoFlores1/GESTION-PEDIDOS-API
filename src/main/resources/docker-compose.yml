@@ -1,0 +1,28 @@
+version: '3'
+services:
+  ### Postgres database para Clientes y Productos
+  db-actores:
+    container_name: bd-actores
+    image: postgres:16.4
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: bd_actores
+      POSTGRES_USER: alexis
+      POSTGRES_PASSWORD: alexis12345
+    ports:
+      - "5432:5432"
+    expose:
+      - 5432
+    ### MongoDB database para Pedidos
+  db-pedidos:
+    container_name: bd-pedidos
+    image: mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: db_pedidos
+      MONGO_INITDB_ROOT_USERNAME: alexis
+      MONGO_INITDB_ROOT_PASSWORD: alexis12345
+    ports:
+      - "27017:27017"
+    expose:
+      - 27017
